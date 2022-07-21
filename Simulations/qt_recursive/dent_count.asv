@@ -1,0 +1,20 @@
+% Calculate how many descendents the current node in the query tree has.
+function count = dent_count(prefix); 
+
+global ids;
+
+% Check if there is a collision with the current prefix.
+len = length(prefix);
+done = false;
+index = 0;
+matches = 0;
+while (~done)
+    index = index + 1;
+    if ( all(prefix == ids(index,1:len)) ) % Prefix match.
+        matches = matches + 1;
+    end
+    if ( (matches == 2) || (index == length(ids(:,1))) ) 
+        done = true;
+    end
+end % while
+if 

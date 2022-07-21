@@ -1,0 +1,14 @@
+% Generate n unqiue uniformly distributed binary ids, each with length k.
+function ids = generate_ids(rnd_state, n, id_space)
+
+k = length(id_space(1,:));
+
+% Check to see if there is enough bits for n unique ids.
+if (2^k < n)
+    ids = 0;
+    return;
+end
+
+rand('state',rnd_state);
+perm = randperm(2^k);
+indices = perm(1:n)

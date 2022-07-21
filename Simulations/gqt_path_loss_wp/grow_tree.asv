@@ -1,0 +1,27 @@
+% Calculate probabilistically whether to grow tree or not.
+
+% l is the length of the current prefix.
+% gamma is a user defined parameter.
+% k is the length of the tag id.
+function grow = grow_tree(l, k, gamma)
+
+if (gamma == 0)
+    return 0;
+end
+
+if (gamma == 1)
+    return 1;
+end
+
+if (l == k)
+    return 0;
+end
+
+p1 = 1 - l/k;
+p2 = gamma;
+
+f1 = abs( (p1-0.5) / ( (p1-1)*p1 ) );
+f2 = abs( (p2-0.5) / ( (P2-1)*p2 ) );
+
+p = (f1 / (f1+f2))*p1 + (f2 / (f1+f2))*p2;
+

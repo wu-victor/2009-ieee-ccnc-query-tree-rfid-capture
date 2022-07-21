@@ -1,0 +1,14 @@
+function id_space = generate_id_space(k)
+
+id_space = zeros(k,2^k);
+for col = k:1:1
+    pattern = [zeros(k,1) ; ones(k,1)];
+    reps = (2^k) / length(pattern);
+    vertical = [];
+    for index = 1:1:reps
+        vertical = [vertical ; pattern];
+    end
+    id_space(:,col);
+    
+    
+end % for col
